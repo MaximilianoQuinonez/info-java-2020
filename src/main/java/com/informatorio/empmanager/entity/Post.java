@@ -1,37 +1,60 @@
 package com.informatorio.empmanager.entity;
 
-import java.time.LocalDate;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity 
-public class Post {
+public class Post implements Serializable{
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String titulo;
     private String descripcion;
     private String contenido;
-    private LocalDate fecha_creacion;
-    private String autor;
+    private String fecha_creacion;
+    
     private Boolean publicado;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "author", referencedColumnName = "id")
+    @JsonIgnore
     private Usuario author;
 
-    public Usuario getUsuario() {
+    
+    @OneToMany(mappedBy = "post", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    private List<Comentario> comentario;
+
+    public List<Comentario> getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(List<Comentario> comentario) {
+        this.comentario = comentario;
+    }
+
+    public Usuario getAuthor() {
         return author;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setAuthor(Usuario usuario) {
         this.author = usuario;
     }
 
@@ -67,20 +90,12 @@ public class Post {
         this.contenido = contenido;
     }
 
-    public LocalDate getFecha_creacion() {
+    public String getFecha_creacion() {
         return fecha_creacion;
     }
 
-    public void setFecha_creacion(LocalDate fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setFecha_creacion(String date) {
+        this.fecha_creacion = date;
     }
 
     public Boolean getPublicado() {
@@ -91,5 +106,16 @@ public class Post {
         this.publicado = publicado;
     }
 
+	public void setFecha_alta(Date date) {
+    }
+
+	public Object save(Post post) {
+		return null;
+	}
+    
+    public void addComment(Comentario comment){
+        this.comentario.add(comment);
+        comment.setPost(this);
+    }
     
 }

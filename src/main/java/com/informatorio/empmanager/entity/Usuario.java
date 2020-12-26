@@ -1,18 +1,21 @@
 package com.informatorio.empmanager.entity;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 @Entity 
-public class Usuario {
+public class Usuario implements Serializable {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -20,12 +23,12 @@ public class Usuario {
     private String apellido;
     private String email;
     private String password;
-    private Date fecha_alta;
+    private String alta;
     private String ciudad;
     private String provincia;
     private String pais;
 
-    @OneToMany
+    @OneToMany(mappedBy = "author", orphanRemoval = true, cascade = CascadeType.PERSIST)
     private List<Post> post;
 
     public List<Post> getPosts(){
@@ -36,7 +39,7 @@ public class Usuario {
         this.post = post;
     }
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "author", orphanRemoval = true)
     private List<Comentario> comentario;
 
     public List<Comentario> getComentario() {
@@ -87,12 +90,12 @@ public class Usuario {
         this.password = password;
     }
 
-    public Date getFecha_alta() {
-        return fecha_alta;
+    public String getAlta() {
+        return alta;
     }
 
-    public void setFecha_alta(Date fecha_alta) {
-        this.fecha_alta = fecha_alta;
+    public void setAlta(String date) {
+        this.alta = date;
     }
 
     public String getCiudad() {
@@ -117,6 +120,16 @@ public class Usuario {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public void addPost(Post post){
+        this.post.add(post);
+        post.setAuthor(this);
+    }
+
+    public void addComment(Comentario comment){
+        this.comentario.add(comment);
+        comment.setAuthor(this);
     }
     
 }
