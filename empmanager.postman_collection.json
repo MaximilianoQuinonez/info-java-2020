@@ -40,7 +40,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Silva\",\r\n    \"email\": \"eduww@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"ciudad\": \"Resistencia\",\r\n    \"provincia\": \"Chaco\",\r\n    \"pais\": \"Argentina\"\r\n\r\n}\r\n",
+					"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Silva\",\r\n    \"email\": \"carlossilva@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"ciudad\": \"Resistencia\",\r\n    \"provincia\": \"Chaco\",\r\n    \"pais\": \"Argentina\"\r\n\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,7 +101,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\r\n        \"nombre\": \"Maximiliano\",\r\n        \"apellido\": \"Silva\",\r\n        \"email\": \"maxi@gmail.com\",\r\n        \"password\": \"1234\",\r\n        \"ciudad\": \"Resistencia\",\r\n        \"provincia\": \"Chaco\",\r\n        \"pais\": \"Nuevo\"\r\n}",
+					"raw": "{\r\n\r\n        \"nombre\": \"Maximiliano\",\r\n        \"apellido\": \"Quinonez\",\r\n        \"email\": \"maxiquinonez@gmail.com\",\r\n        \"password\": \"1234\",\r\n        \"ciudad\": \"Capiata\",\r\n        \"provincia\": \"Asuncion\",\r\n        \"pais\": \"Paraguay\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -200,7 +200,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"titulo\": \"nada que ver\",\r\n        \"descripcion\": \"aca va la descripcion del posteo\",\r\n        \"contenido\": \"bueno aca se escribe largo\",\r\n        \"publicado\": \"false\"\r\n\r\n    }\r\n   ",
+					"raw": "    {\r\n        \"titulo\": \"Titulo del post\",\r\n        \"descripcion\": \"Breve descripcion de la publicacion\",\r\n        \"contenido\": \"Todo de lo que trata el posteo\",\r\n        \"publicado\": \"false\"\r\n\r\n    }\r\n   ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -290,7 +290,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n     \r\n    \"titulo\": \"titulo nuevo\",\r\n    \"descripcion\": \"descripcion nueva\",\r\n    \"contenido\": \"contenido nuevo\"\r\n    \r\n}\r\n",
+					"raw": "{\r\n     \r\n    \"titulo\": \"Nuevo titulo del post\",\r\n    \"descripcion\": \"Nueva descripcion\",\r\n    \"contenido\": \"Nuevo contenido\"\r\n    \r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -322,7 +322,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"comentario\": \"padsfjasdddddskfñlakdsjfñlkasdjfñlasdkfjañdlsfjadñslfjadñsfladkfjañdslfjadñflkadjfñalsdfjjañdfadfadsfdfdfdfdfdfdfdfdfdfdo\"\r\n}\r\n",
+					"raw": "{\r\n    \"comentario\": \"Hola soy un comentario.\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -398,7 +398,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"comentario\": \"algo\"\r\n}",
+					"raw": "{\r\n    \"comentario\": \"Hola soy otro comentario\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -463,6 +463,29 @@
 						"all-users",
 						"after-date",
 						"24-12-2020"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "COMENTARIO - Mostrar comentarios de un post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/comment/all-comments/1/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"comment",
+						"all-comments",
+						"1",
+						"3"
 					]
 				}
 			},

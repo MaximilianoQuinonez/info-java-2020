@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.informatorio.empmanager.entity.Usuario;
 import com.informatorio.empmanager.repository.UsuarioRepository;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;

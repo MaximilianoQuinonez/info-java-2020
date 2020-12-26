@@ -74,4 +74,20 @@ public class ComentarioController {
    public Comentario putPost(@PathVariable Long id, @RequestBody Comentario comentario){
        return comenservicio.putById(id,comentario);
    }    
+
+   //Mostrar los comentarios de un post
+   @GetMapping(path = "/all-comments/{id_post}/{cant}")
+    public List<Comentario> traerComentarios(@PathVariable int cant, @PathVariable Long id_post){
+        if (cant <= postRepo.getOne(id_post).getComentario().size()) { 
+        return postRepo.getOne(id_post).getComentario().subList(
+                ((postRepo.getOne(id_post).getComentario().size()-1)+1 ) -cant,
+                (postRepo.getOne(id_post).getComentario().size()-1)+1);
+        } else 
+            return postRepo.getOne(id_post).getComentario();
+    }
+
+    @GetMapping(path = "/all-comments/{id_post}/")
+    public List<Comentario> traerComentarios(@PathVariable Long id_post){
+        return postRepo.getOne(id_post).getComentario();
+    }
 }
